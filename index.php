@@ -69,11 +69,14 @@ if (isset($_POST['delete'])) {
           <td><?php echo $row['user_name']; ?></td>
           <td><?php echo $row['address']; ?></td>
           <td>
-          <a href="#" class="btn btn-primary btn-sm">Edit</a>
+          <form action="update.php" method="POST" style="display: inline;">
+            <input type="hidden" name="id" value="<?php echo $row['user_id']; ?>">
+            <button type="submit" value="Delete" class="btn btn-primary btn-sm" onclick="return confirm('Are you sure you want to edit?')">
+            <i class="fas fa-edit"></i>
         <!-- Delete button -->
         <form method="POST" style="display: inline;">
             <input type="hidden" name="id" value="<?php echo $row['user_id']; ?>">
-            <button type="submit" name="delete" value="Delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">
+            <button type="submit" value="Delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">
             <i class="fas fa-trash-alt"></i>
             </button>
         </form>
