@@ -5,7 +5,7 @@ $con = new database();
 
 session_start();
 if (!isset($_SESSION['username']) || $_SESSION['account_type'] != 0) {
-  header('location:login.php');
+  header('location:login.php?status=success');
   exit();
 }
 
