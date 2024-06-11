@@ -1,7 +1,16 @@
 <?php
 require_once("classes/database.php");
 $con = new database();
+
+
 session_start();
+if (!isset($_SESSION['username']) || $_SESSION['account_type'] != 0) {
+  header('location:login.php');
+  exit();
+}
+
+
+
 if (isset($_POST['delete'])) {
     $id =$_POST['id'];
     if ($con->delete($id)) {
@@ -110,8 +119,13 @@ document.addEventListener('DOMContentLoaded', function() {
     switch (status) {
       case 'success':
         title = 'Success!';
-        text = 'Record is successfully deleted.';
+        text = 'Record is successfully updated.';
         icon = 'success';
+        break;
+        case 'login':
+        title = 'Logged In!';
+        text = 'You are already logged in.';
+        icon = 'error';
         break;
       case 'error':
         title = 'Error!';

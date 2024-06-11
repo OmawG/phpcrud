@@ -4,14 +4,16 @@ $con = new database();
 session_start();
 
 // If the user is already logged in, check their account type and redirect accordingly
-// if (isset($_SESSION['username']) && isset($_SESSION['account_type'])) {
-//   if ($_SESSION['account_type'] == 0) {
-//     header('location:index.php');
-//   } else if ($_SESSION['account_type'] == 1) {
-//     header('location:user_account.php');
-//   }
-//   exit();
-// }
+ if (isset($_SESSION['username']) && isset($_SESSION['account_type'])) {
+   if ($_SESSION['account_type'] == 0) {
+     header('location:index.php?status=login');
+   } else if ($_SESSION['account_type'] == 1) {
+     header('location:user_account.php');
+   }
+   exit();
+ }
+
+
 
 $error = ""; // Initialize error variable
 
@@ -95,5 +97,7 @@ if (isset($_POST['login'])) {
 <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
 <!-- Bootsrap JS na nagpapagana ng danger alert natin -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
 </body>
 </html>
